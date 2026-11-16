@@ -312,7 +312,7 @@ export default function Header() {
 
         <a
           href={contact.enquire}
-          className="hidden shrink-0 rounded-full bg-saffron px-7 py-3 text-base font-bold text-white transition hover:bg-saffron-dark nav:block"
+          className="ml-auto shrink-0 rounded-full bg-saffron px-5 py-2.5 text-sm font-bold text-white transition hover:bg-saffron-dark sm:px-7 sm:py-3 sm:text-base nav:ml-0"
         >
           Enquire
         </a>
@@ -321,10 +321,35 @@ export default function Header() {
           type="button"
           aria-expanded={open}
           aria-controls="mobile-nav"
+          aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
-          className="ml-auto cursor-pointer rounded-full border border-current px-5 py-2 text-base font-bold nav:hidden"
+          className="flex h-11 w-11 shrink-0 cursor-pointer items-center justify-center rounded-full border border-current nav:hidden"
         >
-          {open ? "Close" : "Menu"}
+          {open ? (
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          ) : (
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          )}
         </button>
       </div>
 
@@ -338,12 +363,6 @@ export default function Header() {
               <MobileItem key={item.label} item={item} />
             ))}
           </ul>
-          <a
-            href={contact.enquire}
-            className="mt-6 block rounded-full bg-saffron px-7 py-3 text-center text-lg font-bold text-white"
-          >
-            Enquire
-          </a>
           <div className="mt-6 grid gap-1 text-base">
             <a href={contact.phoneHref}>{contact.phone}</a>
             <a href={contact.whatsappHref}>{contact.whatsapp} (Whatsapp)</a>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 import { img } from "@/lib/images";
 import Link from "next/link";
 import CourseCards from "@/components/CourseCards";
@@ -40,26 +40,77 @@ function Stars({ className = "" }: { className?: string }) {
   );
 }
 
+/** Art-directed hero: portrait photo on phones, landscape from the md breakpoint up. */
+function HeroPicture() {
+  const common = {
+    alt: "Students practising a twisting pose on the sand beside the Ganga in Rishikesh",
+    fill: true,
+    sizes: "100vw",
+    placeholder: "blur" as const,
+  };
+  const {
+    props: { srcSet: desktop },
+  } = getImageProps({ ...common, src: img["hero"] });
+  const {
+    props: { srcSet: mobile, ...rest },
+  } = getImageProps({
+    ...common,
+    src: img["hero-mobile"],
+    loading: "eager",
+    fetchPriority: "high",
+  });
+
+  return (
+    <picture>
+      <source media="(min-width: 768px)" srcSet={desktop} />
+      <source srcSet={mobile} />
+      {/* alt comes from getImageProps via rest */}
+      {/* eslint-disable-next-line jsx-a11y/alt-text */}
+      <img
+        {...rest}
+        className="object-cover object-[center_35%] md:object-[62%_center]"
+      />
+    </picture>
+  );
+}
+
 export default function Home() {
   return (
     <>
       <Header />
 
       <main className="flex flex-col gap-6 lg:gap-8">
-        {/* ───────── Hero: just the photo, filling the first screen ───────── */}
+        {/* ───────── Hero: full-screen photo (portrait crop on mobile) with intro ───────── */}
         <section
-          className="relative h-svh max-h-275"
+          className="relative flex h-svh max-h-275 items-end overflow-hidden text-white"
           aria-label="Yoga by the Ganga in Rishikesh"
         >
-          <Image
-            src={img["hero"]}
-            alt="Students practising a twisting pose on the sand beside the Ganga in Rishikesh"
-            fill
-            preload
-            placeholder="blur"
-            sizes="100vw"
-            className="object-cover object-[62%_center]"
-          />
+          <HeroPicture />
+          {/* Mobile: stronger shade at the bottom for text; Desktop: shade the left. */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgb(0_0_0/0.35),transparent_35%,rgb(0_0_0/0.25)_55%,rgb(0_0_0/0.75))] md:bg-linear-to-r md:from-black/65 md:via-black/20 md:to-transparent" />
+
+          <div
+            className={`${WRAP} relative flex h-full flex-col justify-end pb-8 pt-24 sm:pb-16 lg:pb-24`}
+          >
+            <div className="max-w-2xl">
+              <p className="mb-3 w-fit rounded-full bg-white/15 px-3.5 py-1 text-xs font-semibold uppercase tracking-widest backdrop-blur-sm sm:mb-4 sm:px-4 sm:py-1.5 sm:text-sm">
+                Yoga Alliance USA registered
+              </p>
+              <p className="font-display text-[2rem] font-semibold leading-tight sm:text-5xl xl:text-6xl">
+                Yoga Teacher Training in Rishikesh
+              </p>
+              <p className="mt-3 max-w-xl text-base leading-snug text-white/90 sm:mt-4 sm:text-xl">
+                Residential 200, 300 & 500 hour courses in the Himalayan
+                valley, beside the sacred River Ganga.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3 sm:mt-7">
+                <a href="#ttc-courses" className={BTN}>
+                  Explore courses
+                </a>
+              </div>
+            </div>
+          </div>
         </section>
 
         <Welcome />

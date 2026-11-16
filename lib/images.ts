@@ -20,6 +20,7 @@ import gallerySchool from "@/public/images/gallery-school.jpg";
 import galleryTrainings from "@/public/images/gallery-trainings.jpg";
 import graduation from "@/public/images/graduation.jpg";
 import hero from "@/public/images/hero.jpg";
+import heroMobile from "@/public/images/hero-mobile.webp";
 import inesViar from "@/public/images/ines-viar.jpg";
 import insta1 from "@/public/images/insta-1.jpg";
 import insta2 from "@/public/images/insta-2.jpg";
@@ -60,6 +61,7 @@ export const img = {
   "gallery-trainings": galleryTrainings,
   "graduation": graduation,
   "hero": hero,
+  "hero-mobile": heroMobile,
   "ines-viar": inesViar,
   "insta-1": insta1,
   "insta-2": insta2,
