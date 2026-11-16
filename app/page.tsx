@@ -377,31 +377,34 @@ export default function Home() {
             </div>
 
             {/*
-              Bento grid (desktop, 4 × 3):
-              [ A A B C ]
-              [ A A D C ]
-              [ E F F ★ ]   ★ = "view full gallery" tile
+              Mobile (2 cols):     Desktop (4 cols):
+              [ A A ]              [ A A B C ]
+              [ A A ]              [ A A D C ]
+              [ B C ]              [ E F F ★ ]
+              [ D E ]
+              [ F F ]
+              [ ★ ★ ]
             */}
-            <ul className="grid auto-rows-44 grid-cols-2 gap-3 sm:auto-rows-56 sm:gap-4 lg:auto-rows-60 lg:grid-cols-4">
+            <ul className="grid auto-rows-36 grid-cols-2 gap-2.5 sm:auto-rows-48 sm:gap-3.5 lg:auto-rows-60 lg:grid-cols-4 lg:gap-4">
               {gallery.albums.map((a, i) => {
                 const comma = a.title.lastIndexOf(",");
                 const name = comma > 0 ? a.title.slice(0, comma) : a.title;
-                const place = comma > 0 ? a.title.slice(comma + 1).trim() : "";
                 const span =
                   [
                     "col-span-2 row-span-2",
                     "",
-                    "row-span-2",
+                    "lg:row-span-2",
                     "",
                     "",
                     "col-span-2",
                   ][i] ?? "";
                 const big = i === 0;
+                const wide = i === 5;
                 return (
                   <li key={a.href} className={span}>
                     <a
                       href={a.href}
-                      className="group relative block h-full overflow-hidden rounded-lg"
+                      className="group relative block h-full min-h-full overflow-hidden rounded-xl sm:rounded-2xl"
                     >
                       <Image
                         src={a.image}
@@ -409,45 +412,30 @@ export default function Home() {
                         fill
                         placeholder="blur"
                         sizes={
-                          big
+                          big || wide
                             ? "(max-width: 1024px) 100vw, 50vw"
                             : "(max-width: 1024px) 50vw, 25vw"
                         }
                         className="object-cover transition duration-700 ease-out group-hover:scale-105"
                       />
                       <span
-                        className="absolute inset-0 bg-linear-to-t from-black/50 via-black/10 to-transparent"
+                        className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent"
                         aria-hidden="true"
                       />
-                      <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-ink shadow-sm backdrop-blur sm:right-4 sm:top-4">
-                        {a.count} photos
+                      <span className="absolute right-2.5 top-2.5 rounded-full bg-white/95 px-2 py-0.5 text-[11px] font-semibold text-ink shadow-sm sm:right-3.5 sm:top-3.5 sm:px-2.5 sm:py-1 sm:text-xs">
+                        {a.count}
                       </span>
-                      <span className="absolute inset-x-0 bottom-0 p-4 text-white sm:p-5">
-                        {/* {place && (
-                          <span className="mb-1 flex items-center gap-1 text-xs font-semibold text-white/80 sm:text-sm">
-                            <svg
-                              viewBox="0 0 24 24"
-                              className="h-3.5 w-3.5"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              aria-hidden="true"
-                            >
-                              <path d="M12 21s6.5-5.8 6.5-11.2a6.5 6.5 0 10-13 0C5.5 15.2 12 21 12 21zm0-8.5a2.7 2.7 0 100-5.4 2.7 2.7 0 000 5.4z" />
-                            </svg>
-                            {place}
-                          </span>
-                        )} */}
+                      <span className="absolute inset-x-0 bottom-0 p-3 text-white sm:p-4 lg:p-5">
                         <span
-                          className={`flex items-end justify-between gap-3 font-display font-semibold leading-snug ${big ? "text-xl sm:text-2xl" : "text-base sm:text-xl"}`}
+                          className={`line-clamp-2 font-display font-semibold leading-snug ${
+                            big
+                              ? "text-lg sm:text-2xl"
+                              : wide
+                                ? "text-base sm:text-xl"
+                                : "text-sm sm:text-lg"
+                          }`}
                         >
                           {name}
-                          {/* <span
-                            className="hidden h-9 w-9 shrink-0 translate-y-2 items-center justify-center rounded-full bg-white text-base text-forest opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:flex"
-                            aria-hidden="true"
-                          >
-                            ↗
-                          </span> */}
                         </span>
                       </span>
                     </a>
@@ -459,18 +447,19 @@ export default function Home() {
               <li className="col-span-2 lg:col-span-1">
                 <a
                   href={gallery.href}
-                  className="group flex h-full flex-col justify-between rounded-lg bg-forest p-6 text-white transition hover:bg-forest-dark"
+                  className="group flex h-full min-h-36 flex-row items-center justify-between gap-4 rounded-xl bg-forest p-4 text-white transition hover:bg-forest-dark sm:min-h-0 sm:flex-col sm:items-stretch sm:justify-between sm:rounded-2xl sm:p-6"
                 >
-                  <span className="font-display text-5xl font-semibold leading-none">
+                  <span className="font-display text-3xl font-semibold leading-none sm:text-5xl">
                     {gallery.albums.reduce((n, a) => n + a.count, 0)}+
-                    <span className="mt-2 block text-base font-medium text-white/75">
-                      photos across {gallery.albums.length} albums
+                    <span className="mt-1 block text-sm font-medium text-white/75 sm:mt-2 sm:text-base">
+                      photos · {gallery.albums.length} albums
                     </span>
                   </span>
-                  <span className="flex items-center justify-between text-base font-semibold">
-                    View full gallery
+                  <span className="flex shrink-0 items-center gap-3 text-sm font-semibold sm:justify-between sm:text-base">
+                    <span className="hidden sm:inline">View full gallery</span>
+                    <span className="sm:hidden">View all</span>
                     <span
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-forest transition group-hover:translate-x-1"
+                      className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-forest transition group-hover:translate-x-1 sm:h-10 sm:w-10"
                       aria-hidden="true"
                     >
                       →
