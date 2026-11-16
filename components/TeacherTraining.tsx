@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { img } from "@/lib/images";
 import CourseCards from "@/components/CourseCards";
 import { contact, ttc } from "@/lib/content";
 
@@ -82,10 +83,10 @@ export default function TeacherTraining() {
 
         <div className="relative min-h-96 overflow-hidden rounded-3xl lg:col-span-6 lg:min-h-0">
           <Image
-            src="/images/lawn-class.jpg"
+            src={img["lawn-class"]}
             alt="Morning yoga class on the lawn of the school in Rishikesh"
             fill
-            quality={90}
+            placeholder="blur"
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover"
           />
@@ -154,10 +155,10 @@ export default function TeacherTraining() {
 
                 <div className="relative mt-7 hidden aspect-4/3 overflow-hidden rounded-xl lg:block">
                   <Image
-                    src="/images/gallery-school.jpg"
+                    src={img["gallery-school"]}
                     alt="The yoga school campus in the hills of Rishikesh"
                     fill
-                    quality={90}
+                    placeholder="blur"
                     sizes="33vw"
                     className="object-cover"
                   />
@@ -221,30 +222,30 @@ export default function TeacherTraining() {
         <div className="grid grid-cols-2 gap-4 lg:col-span-6">
           <div className="relative col-span-2 aspect-video overflow-hidden rounded-3xl">
             <Image
-              src="/images/meditation-hall.jpg"
+              src={img["meditation-hall"]}
               alt="Students seated in meditation inside the yoga hall"
               fill
-              quality={90}
+              placeholder="blur"
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
           <div className="relative aspect-square overflow-hidden rounded-3xl">
             <Image
-              src="/images/graduation.jpg"
+              src={img["graduation"]}
               alt="Graduating students celebrating together"
               fill
-              quality={90}
+              placeholder="blur"
               sizes="(max-width: 1024px) 50vw, 25vw"
               className="object-cover"
             />
           </div>
           <div className="relative aspect-square overflow-hidden rounded-3xl">
             <Image
-              src="/images/gallery-meals.jpg"
+              src={img["gallery-meals"]}
               alt="Fresh vegetarian meals served at the school"
               fill
-              quality={90}
+              placeholder="blur"
               sizes="(max-width: 1024px) 50vw, 25vw"
               className="object-cover"
             />

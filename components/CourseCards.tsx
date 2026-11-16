@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { img } from "@/lib/images";
 import type { Course } from "@/lib/content";
 
 /** Round Yoga Alliance seal for a course: RYS 200/300/500, or YACEP for CE-hour retreats. */
@@ -6,11 +7,11 @@ function sealFor(c: Course) {
   const n = c.certification?.match(/\d+/)?.[0];
   return n
     ? {
-        src: `/images/badge-rys-${n}.png`,
+        src: img[`badge-rys-${n}` as "badge-rys-200" | "badge-rys-300" | "badge-rys-500"],
         alt: `Yoga Alliance ${c.certification}`,
       }
     : {
-        src: "/images/badge-yacep.png",
+        src: img["badge-yacep"],
         alt: "Yoga Alliance Continuing Education Provider",
       };
 }
@@ -63,7 +64,7 @@ export default function CourseCards({
                   src={c.image}
                   alt=""
                   fill
-                  quality={90}
+                  placeholder="blur"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition duration-700 ease-out group-hover:scale-105"
                 />

@@ -1,6 +1,9 @@
 // All copy on the landing page lives here, taken from yogavidyamandiram.com.
 // Links point at the live site until the inner pages are rebuilt.
 
+import type { StaticImageData } from "next/image";
+import { img } from "@/lib/images";
+
 export const SITE = "https://yogavidyamandiram.com";
 
 export type NavLink = { label: string; href: string };
@@ -217,7 +220,7 @@ export const welcome = {
     "Choosing to study at one of the best yoga schools in Rishikesh means more than just joining classes—it’s about starting a personal journey of growth and transformation. At Yoga Vidya Mandiram, we warmly invite you to experience this journey with us and discover the true essence of yoga in the heart of Rishikesh.",
   ],
   videoId: "FD_eK2pNgr0",
-  videoPoster: "/images/video-intro.jpg",
+  videoPoster: img["video-intro"],
 };
 
 export const values = [
@@ -281,7 +284,7 @@ export type Course = {
   daysHref: string;
   level: string;
   levelHref: string;
-  image: string;
+  image: StaticImageData;
   hours?: string;
   tag?: string;
   /** Short name of the path, shown above the title (e.g. "Foundation Teacher Training"). */
@@ -391,7 +394,7 @@ export const ttc = {
       daysHref: `${SITE}/dt_yoga_days/22-days/`,
       level: "Beginner - Intermediate",
       levelHref: `${SITE}/dt_yoga_stages/beginner-intermediate/`,
-      image: "/images/ttc-200.jpg",
+      image: img["ttc-200"],
       hours: "200",
       summary:
         "Build a strong foundation in asana, pranayama, philosophy, and teaching skills — ideal for beginners and dedicated practitioners.",
@@ -410,7 +413,7 @@ export const ttc = {
       daysHref: `${SITE}/dt_yoga_days/28-days/`,
       level: "Intermediate - Advance",
       levelHref: `${SITE}/dt_yoga_stages/intermediate-advance/`,
-      image: "/images/ttc-300.jpg",
+      image: img["ttc-300"],
       hours: "300",
       summary:
         "Deepen your practice and teaching after the 200-hour course with advanced study, refinement, and greater personal sadhana.",
@@ -429,7 +432,7 @@ export const ttc = {
       daysHref: `${SITE}/dt_yoga_days/50-days/`,
       level: "Beginner - Advance",
       levelHref: `${SITE}/dt_yoga_stages/beginner-advance/`,
-      image: "/images/ttc-500.jpg",
+      image: img["ttc-500"],
       hours: "500",
       summary:
         "A complete combined path — foundation through advanced training for those ready to live and teach yoga with full commitment.",
@@ -479,7 +482,7 @@ export const retreats = {
       daysHref: `${SITE}/dt_yoga_days/3-days/`,
       level: "Beginner",
       levelHref: `${SITE}/dt_yoga_stages/beginner/`,
-      image: "/images/retreat-3-day.jpg",
+      image: img["retreat-3-day"],
       tag: "Meditation",
       summary:
         "A gentle Himalayan introduction — daily yoga, meditation, and quiet time to reset body and mind in Rishikesh.",
@@ -497,7 +500,7 @@ export const retreats = {
       daysHref: `${SITE}/dt_yoga_days/7-days/`,
       level: "Beginner",
       levelHref: `${SITE}/dt_yoga_stages/beginner/`,
-      image: "/images/retreat-7-meditation.jpg",
+      image: img["retreat-7-meditation"],
       tag: "Yoga & Meditation",
       summary:
         "A full week of practice, stillness, and Himalayan atmosphere — deepen your self-practice without the intensity of a TTC.",
@@ -515,7 +518,7 @@ export const retreats = {
       daysHref: `${SITE}/dt_yoga_days/7-days/`,
       level: "Beginner",
       levelHref: `${SITE}/dt_yoga_stages/beginner/`,
-      image: "/images/retreat-7-nidra.jpg",
+      image: img["retreat-7-nidra"],
       tag: "Yoga Nidra",
       summary:
         "Restore through Yoga Nidra — guided deep rest, gentle yoga, and practices that calm the nervous system.",
@@ -537,7 +540,7 @@ export const gallery = {
       title: "Yoga Trainings & Retreats, Rishikesh",
       count: 9,
       href: `${SITE}/dt_portfolio/yoga-trainings-retreats/`,
-      image: "/images/gallery-trainings.jpg",
+      image: img["gallery-trainings"],
       w: 2048,
       h: 1363,
     },
@@ -545,7 +548,7 @@ export const gallery = {
       title: "Meals & Dining Area, Rishikesh",
       count: 15,
       href: `${SITE}/dt_portfolio/meals/`,
-      image: "/images/gallery-meals.jpg",
+      image: img["gallery-meals"],
       w: 1205,
       h: 904,
     },
@@ -553,7 +556,7 @@ export const gallery = {
       title: "School Area, Rishikesh",
       count: 11,
       href: `${SITE}/dt_portfolio/school-area/`,
-      image: "/images/gallery-school.jpg",
+      image: img["gallery-school"],
       w: 2048,
       h: 1536,
     },
@@ -561,7 +564,7 @@ export const gallery = {
       title: "Student Accommodation, Rishikesh",
       count: 16,
       href: `${SITE}/dt_portfolio/student-accommodation/`,
-      image: "/images/gallery-rooms.jpg",
+      image: img["gallery-rooms"],
       w: 1280,
       h: 960,
     },
@@ -569,7 +572,7 @@ export const gallery = {
       title: "Yoga Teacher Trainings, Chiangmai",
       count: 9,
       href: `${SITE}/dt_portfolio/yoga-teacher-trainings/`,
-      image: "/images/gallery-chiangmai-ttc.jpg",
+      image: img["gallery-chiangmai-ttc"],
       w: 900,
       h: 675,
     },
@@ -577,7 +580,7 @@ export const gallery = {
       title: "Student Accommodation, Chiangmai",
       count: 9,
       href: `${SITE}/dt_portfolio/student-accommodation-2/`,
-      image: "/images/gallery-chiangmai-rooms.jpg",
+      image: img["gallery-chiangmai-rooms"],
       w: 1024,
       h: 768,
     },
@@ -590,17 +593,17 @@ export type Story = {
   name: string;
   course: string;
   date: string;
-  image?: string;
+  image?: StaticImageData;
 };
 
 export const testimonials: {
   videoId: string;
-  videoPoster: string;
+  videoPoster: StaticImageData;
   more: string;
   stories: Story[];
 } = {
   videoId: "TpAJcn-ZHOc",
-  videoPoster: "/images/video-testimonial.jpg",
+  videoPoster: img["video-testimonial"],
   more: `${SITE}/yoga-teacher-training-india-testimonial/`,
   stories: [
     {
@@ -612,7 +615,7 @@ export const testimonials: {
       name: "Vlad Agachi",
       course: "500 Hour Yoga TTC",
       date: "March 2020",
-      image: "/images/vlad-agachi.jpg",
+      image: img["vlad-agachi"],
     },
     {
       title: "One of the best experiences of my life",
@@ -633,7 +636,7 @@ export const testimonials: {
       name: "Ines Viar",
       course: "200 Hour Yoga TTC",
       date: "November 2019",
-      image: "/images/ines-viar.jpg",
+      image: img["ines-viar"],
     },
     {
       text: [
@@ -644,7 +647,7 @@ export const testimonials: {
       name: "Yukari Yoritomi",
       course: "7 Days Yoga & Meditation Retreat",
       date: "March 2019",
-      image: "/images/yukari-yoritomi.jpg",
+      image: img["yukari-yoritomi"],
     },
     {
       title: "Amazing experience, highly recommend",
@@ -654,7 +657,7 @@ export const testimonials: {
       name: "Ashleigh Mcconnell",
       course: "50 Hour Yoga TTC",
       date: "March 2019",
-      image: "/images/ashleigh-mcconnell.jpg",
+      image: img["ashleigh-mcconnell"],
     },
     {
       title: "Amazing experience at Yoga Vidya Mandiram",
@@ -666,7 +669,7 @@ export const testimonials: {
       name: "Daniel Cirilli",
       course: "500 Hour Yoga TTC",
       date: "August 2019",
-      image: "/images/daniel-cirilli.jpg",
+      image: img["daniel-cirilli"],
     },
   ],
 };
@@ -682,7 +685,7 @@ export const instagram = {
   posts: [
     {
       href: "https://www.instagram.com/p/DfuEmZwiHDC/",
-      image: "/images/insta-1.jpg",
+      image: img["insta-1"],
       w: 2048,
       h: 1536,
       caption: [
@@ -693,7 +696,7 @@ export const instagram = {
     },
     {
       href: "https://www.instagram.com/p/DfofbEVlFTd/",
-      image: "/images/insta-2.jpg",
+      image: img["insta-2"],
       w: 1536,
       h: 2048,
       caption: [
@@ -705,7 +708,7 @@ export const instagram = {
     },
     {
       href: "https://www.instagram.com/p/DfjxML3CAN-/",
-      image: "/images/insta-3.jpg",
+      image: img["insta-3"],
       w: 2048,
       h: 1536,
       caption: [
@@ -717,7 +720,7 @@ export const instagram = {
     },
     {
       href: "https://www.instagram.com/p/Dfd3aYeoPUc/",
-      image: "/images/insta-4.jpg",
+      image: img["insta-4"],
       w: 1080,
       h: 1350,
       caption: [

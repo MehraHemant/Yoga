@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import { useState } from "react";
 
 /** Shows a sharp poster image and only loads the YouTube player when clicked. */
@@ -10,7 +10,7 @@ export default function VideoFacade({
   title,
 }: {
   id: string;
-  poster: string;
+  poster: StaticImageData;
   title: string;
 }) {
   const [playing, setPlaying] = useState(false);
@@ -36,7 +36,7 @@ export default function VideoFacade({
             src={poster}
             alt=""
             fill
-            quality={90}
+            placeholder="blur"
             sizes="(max-width: 1024px) 100vw, 50vw"
             className="object-cover transition duration-500 group-hover:scale-103"
           />

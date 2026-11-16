@@ -15,7 +15,7 @@ function Avatar({ story, size }: { story: Story; size: number }) {
       alt=""
       width={130}
       height={130}
-      quality={90}
+      placeholder="blur"
       style={{ width: size, height: size }}
       className="rounded-full object-cover"
     />

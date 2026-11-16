@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { img } from "@/lib/images";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { contact, nav, type NavItem } from "@/lib/content";
@@ -288,11 +289,11 @@ export default function Header() {
           aria-label="Yoga Vidya Mandiram – home"
         >
           <Image
-            src="/images/logo.png"
+            src={img["logo"]}
             alt="Yoga Vidya Mandiram – 200, 300 & 500 Hours Yoga Teacher Training School"
             width={192}
             height={136}
-            priority
+            loading="eager"
             className={`h-auto w-21 ${solid ? "" : "brightness-0 invert"}`}
           />
         </Link>

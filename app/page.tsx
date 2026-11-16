@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { img } from "@/lib/images";
 import Link from "next/link";
 import CourseCards from "@/components/CourseCards";
 import Header from "@/components/Header";
@@ -51,11 +52,11 @@ export default function Home() {
           aria-label="Yoga by the Ganga in Rishikesh"
         >
           <Image
-            src="/images/hero.jpg"
+            src={img["hero"]}
             alt="Students practising a twisting pose on the sand beside the Ganga in Rishikesh"
             fill
-            priority
-            quality={90}
+            preload
+            placeholder="blur"
             sizes="100vw"
             className="object-cover object-[62%_center]"
           />
@@ -67,10 +68,10 @@ export default function Home() {
         <section id="values" className="bg-white">
           <div className="relative flex h-64 items-end sm:h-80 xl:h-96">
             <Image
-              src="/images/circle.jpg"
+              src={img["circle"]}
               alt="Graduating students lying in a circle on the grass, wearing marigold garlands"
               fill
-              quality={90}
+              placeholder="blur"
               sizes="100vw"
               className="object-cover object-[center_40%]"
             />
@@ -113,10 +114,9 @@ export default function Home() {
             aria-hidden="true"
           >
             <Image
-              src="/images/alliance-bamboo.png"
+              src={img["alliance-bamboo"]}
               alt=""
               fill
-              quality={90}
               sizes="100vw"
               className="object-cover object-right"
             />
@@ -145,11 +145,10 @@ export default function Home() {
                   Yoga Alliance USA
                 </p>
                 <Image
-                  src="/images/yoga-alliance-badges.png"
+                  src={img["yoga-alliance-badges"]}
                   alt="Yoga Alliance registration badges: RYS 200, RYS 300, RYS 500, RCYS and YACEP"
                   width={1036}
                   height={167}
-                  quality={90}
                   className="h-auto w-full"
                 />
               </div>
@@ -178,10 +177,10 @@ export default function Home() {
                 <figure className="group relative border border-line bg-white p-3 pb-0 shadow-[0_28px_60px_-32px_rgba(38,64,26,0.55)] transition duration-500 hover:-translate-y-1 hover:shadow-[0_36px_70px_-30px_rgba(38,64,26,0.6)] sm:p-4">
                   <div className="relative aspect-4/3 overflow-hidden">
                     <Image
-                      src="/images/certificates.jpg"
+                      src={img["certificates"]}
                       alt="Four graduates in white holding their Yoga Vidya Mandiram certificates"
                       fill
-                      quality={90}
+                      placeholder="blur"
                       sizes="(max-width: 1024px) 100vw, 460px"
                       className="object-cover transition duration-700 ease-out group-hover:scale-[1.03]"
                     />
@@ -248,10 +247,10 @@ export default function Home() {
               <div className="lg:col-span-5">
                 <div className="relative aspect-4/5 overflow-hidden rounded-3xl shadow-xl">
                   <Image
-                    src="/images/aarti.jpg"
+                    src={img["aarti"]}
                     alt="Students lighting oil lamps by the Ganga at dusk"
                     fill
-                    quality={90}
+                    placeholder="blur"
                     sizes="(max-width: 1024px) 100vw, 42vw"
                     className="object-cover"
                   />
@@ -357,7 +356,7 @@ export default function Home() {
                         src={a.image}
                         alt={a.title}
                         fill
-                        quality={90}
+                        placeholder="blur"
                         sizes={
                           big
                             ? "(max-width: 1024px) 100vw, 50vw"
@@ -479,7 +478,7 @@ export default function Home() {
               >
                 <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white ring-2 ring-forest/20">
                   <Image
-                    src="/images/logo.png"
+                    src={img["logo"]}
                     alt=""
                     width={192}
                     height={136}
@@ -509,7 +508,7 @@ export default function Home() {
                         src={p.image}
                         alt={p.caption[0]}
                         fill
-                        quality={90}
+                        placeholder="blur"
                         sizes="(max-width: 1024px) 50vw, 25vw"
                         className="object-cover transition duration-700 group-hover:scale-105"
                       />
@@ -667,7 +666,7 @@ export default function Home() {
         >
           <div className="lg:col-span-5">
             <Image
-              src="/images/logo.png"
+              src={img["logo"]}
               alt="Yoga Vidya Mandiram – Yoga Is Samadhi"
               width={192}
               height={136}
